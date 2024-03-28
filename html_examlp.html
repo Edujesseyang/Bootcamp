@@ -4,24 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css_excamle.css" type="text/css">
 </head>
 <body>
-    <h1>Student Bio</h1>
+    <h1 class="header">Student Bio</h1>
     
-    <h3>Jesse Yang</h3>
-    <img title="my_pic" src="C:\Users\jcjcr\Desktop\my_pic.png" height="200" width="150">
-    <h5>This is h5</h5>
-    <h6>This is h6</h6>
+    <h3 class="title">Jesse Yang</h3>
+    <img id="pic" title="my_pic" src="https://www.syracuse.com/resizer/v2/FHGZWSM7ZRAATBUOTQAXUQF3NQ.jpg?auth=a1760695101b6f18e36a592439fe662b1206cd9779138ce89b87c2f34fc07283&width=1280&quality=90" height="200" width="200">
+    <img id="pic" title="my_pic" src="my_pic2.jpg" height="200" width="200">
+    <img id="pic" title="my_pic" src="my_pic.png" height="200" width="200">
 
+    <h3 class="contInfo">Contact Information:</h3>
     <ul>
-        <li>This is a list item in the outer list
-            <ol>
-                <li>This is a list item in the sub-list</li>
-                <li>This is a list item in the sub-list</li>
-                <li>This is a list item in the sub-list</li>
-            </ol>
-        </li>
+        <li><p class="text">Email: jcjcrun@gmail.com</p></li>
+        <li><p class="text">Phone number: 6266966011</p></li>
+        <li><p class="text">Facebook: <a href="https://www.facebook.com/haiyang.yang.3367"> Click me to go to facebook page</p></a></li>
     </ul>
-    
+    <input title="password" type="password" name="password"><br>
+    <input type="submit" value="Submit"><br>
+    <input title="checkbox" type="checkbox" name="subscribe" value="newsletter"> Subscribe to newsletter<br>
+    <input title="gender" type="radio" name="gender" value="male"> Male<br>
+    <input title="gender" type="radio" name="gender" value="female"> Female<br>
+    <input title="email-box" type="email" name="user_email"><br>
+    <input title="number" type="number" name="quantity" min="1" max="5"><br>
+    <form action="/submit-form" method="post"><br>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <address>
+        1234 Street Name<br>
+        City, State, Zip
+    </address>
+
+      <script src="path/to/your-script.js"></script>
 </body>
 </html>
