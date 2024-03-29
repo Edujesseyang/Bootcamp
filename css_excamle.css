@@ -22,19 +22,22 @@
 #pic {
     text-align: center;
     padding-left: 40%;
+
 }
 
 .contInfo {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color : #ff0000;
 }
 
-/* This is a single-line comment */
-
-/*
-This is a multi-line comment
-which spans over multiple
-lines.
-*/
-p {
-    padding-bottom: 16px;
+#pic2 {
+    position: relative;
+    left : 21%;
 }
+
+#pic3 {
+    position: relative;
+    left : 41%;
+}
+
+

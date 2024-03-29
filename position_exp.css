@@ -1,0 +1,60 @@
+.header {
+    background-color: rgb(36, 214, 214);
+    padding-bottom:30px;
+
+}
+
+#l1 {
+    background-color: brown;
+    font-size: larger;
+    margin: 0px;
+    position:relative;
+    text-align: right;
+    display: inline;
+    margin-left: 38%;
+    
+   
+    padding:30px;
+    border-radius: 50px;
+    
+    
+}
+#l2 {
+    background-color: rgb(35, 81, 230);
+    font-size: larger;
+    margin: 0px;
+    position:relative;
+    text-align: right;
+    display: inline;
+  
+    padding:30px;
+    border-radius: 50px;
+    
+}
+#l3 {
+    background-color: rgb(166, 206, 21);
+    font-size: larger;
+    margin: 0px;
+    position:relative;
+    text-align: right;
+    display: inline;
+
+    padding:30px;
+    border-radius: 50px;
+    
+}
+
+#pic1 {
+    background-color: blue;
+    position: relative;
+    left:40%;
+    display:block;
+    margin-top: 50px;
+}
+
+#pic2 {
+    background-color: rgb(255, 0, 98);
+    position: relative;
+    left:40%;
+    display:block;
+}
