@@ -1,48 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  
+
 .header {
-    color :rgb(100, 10, 10);
+    color: rgb(100, 10, 10);
     background-color: rgb(206, 245, 232);
     text-align: center;
     font-family: fantasy;
     font-size: xx-large;
     position: fixed;
     width: 100%;
+
+    
 }
 
 .body {
-    margin-top: 200px;
+   margin-top:50px;
+  
+  
 }
-.text {
-    color : rgb(2, 80, 104);
-    background-color: rgb(238, 232, 225) ;
-}
-
-.title {
-    font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color : palevioletred;
-    text-align: center;
-
-}
-
-#pic {
-    text-align: center;
-    padding-left: 40%;
-
-}
-
-.contInfo {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color : #ff0000;
-}
-
-#pic2 {
-    position: relative;
-    left : 21%;
-}
-
-#pic3 {
-    position: relative;
-    left : 41%;
-}
-
-
