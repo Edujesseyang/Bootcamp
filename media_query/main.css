@@ -12,21 +12,23 @@
 }
 
 .title {
-    color: rgb(61, 50, 59);
+    color: rgb(182, 108, 13);
     text-align: center;
-    font-size: xx-large;
-    font-family: fantasy;
-    padding-top: 50px;
+    font-size: 100px;
+    font-family:cursive;
+    padding-top: 10px;
+
 }
 
 .drop_off {
-    background-color: bisque;
+    background-color: rgb(247, 186, 150);
     width: 20%;
     text-align: center;
     display: inline-block;
     box-sizing: border-box;
-
-
+    border: 1px solid black;
+    text-decoration: none;
+    color: brown;
 
 }
 
@@ -74,7 +76,7 @@
     width: 60%;
     display: inline-block;
     position: relative;
-    bottom: 200px;
+    bottom: 30px;
     left: 30px;
 
     
@@ -82,7 +84,10 @@
 }
 
 .text {
-    text-align: right;
+    text-align: center;
+    font-family: cursive;
+    font-size: 14px;
+
     
 
 
