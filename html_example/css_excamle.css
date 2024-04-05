@@ -1,24 +1,32 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-  
-
-.header {
-    color: rgb(100, 10, 10);
-    background-color: rgb(206, 245, 232);
-    text-align: center;
-    font-family: fantasy;
-    font-size: xx-large;
-    position: fixed;
-    width: 100%;
-
-    
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.body {
-   margin-top:50px;
-  
-  
+
+.header {
+  color: rgb(100, 10, 10);
+  background-color: rgb(206, 245, 232);
+  text-align: center;
+  font-family: fantasy;
+  font-size: large;
+  position: fixed;
+  width: 100%;
+  margin-bottom: 50px;
+
+
+}
+
+.header:hover {
+  color: rgb(216, 17, 17);
+  background-color: rgb(206, 245, 232);
+  text-align: center;
+  font-family: fantasy;
+  font-size: large;
+  position: fixed;
+  width: 100%;
+  margin-bottom: 50px;
+
+
 }
