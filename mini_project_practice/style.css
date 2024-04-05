@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: rgb(59, 59, 59);
+    color: antiquewhite;
+}
+
+@media screen and (min-width: 700px) {
+    .headerbox {
+        width: 100%;
+        background-color: rgb(49, 49, 49);
+        height: 100px;
+        text-align: center;
+        padding: 10px 0px 0px;
+
+        h1 {
+            font-size: 25px;
+            font-family: cursive;
+            color: rgb(250, 95, 250);
+        }
+
+        p {
+            font-size: 12px;
+            font-family: cursive;
+            padding: 5px 30px 30px 5px
+        }
+    }
+
+    .body {
+        width: 90%;
+        margin-top: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
+
+        .box1,
+        .box2,
+        .box3 {
+            display: inline-block;
+            width: 30%;
+            border: 1px dashed rgb(253, 253, 253);
+            margin-left: 2%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 20px;
+            color:rgb(201, 122, 247);
+
+            h5 {
+                border: 1px solid white;
+                border-radius: 5px;
+                position: relative;
+                bottom: 15px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                text-align: center;
+                color: rgb(218, 141, 248);
+                font-family: cursive;
+            }
+
+            p {
+                margin-left: 10px;
+                margin-right: 10px;
+                padding-top:10px;
+                padding-inline: 10px;
+                padding-bottom: 200px;
+                margin-top: 20px;
+                background-image: linear-gradient(to top, rgb(243, 44, 226), rgb(43, 1, 39));
+                border-radius: 10px;
+                
+            }
+        }
+
+        .box4,
+        .box5,
+        .box6 {
+            display: inline-block;
+            width: 30%;
+            border: 1px dashed rgb(255, 255, 255);
+            margin-left: 2%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 20px;
+            color:rgb(201, 122, 247);
+
+
+            h5 {
+                border: 1px solid white;
+                border-radius: 5px;
+                position: relative;
+                bottom: 15px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                text-align: center;
+                color: rgb(218, 141, 248);
+                font-family: cursive;
+            }
+
+            p {
+                margin-left: 10px;
+                margin-right: 10px;
+                padding-top:10px;
+                padding-inline: 10px;
+                padding-bottom: 200px;
+                margin-top: 20px;
+                background-image: linear-gradient(to top, rgb(243, 44, 226), rgb(43, 1, 39));
+                border-radius: 10px;
+                
+            }
+        }
+    }
+
+    .footer {
+        text-align: center;
+        font-size: larger;
+        font-family: cursive;
+        h3 {
+            color: rgb(176, 104, 243);
+
+        }
+        
+    }
+}
