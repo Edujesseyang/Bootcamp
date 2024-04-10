@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.div {
+    width: 50%;
+    height: 500px;
+    text-align: center;
+    background-color: antiquewhite;
+    margin: auto;
+
+}
+
+.p {
+    
+}继承
