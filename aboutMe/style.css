@@ -1,3 +1,7 @@
+* {
+    background-image: radial-gradient(rgb(250, 236, 236), rgb(211, 189, 247));
+}
+
 header {
     width: 100%;
     background-color: rgb(229, 246, 247);
