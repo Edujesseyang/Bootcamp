@@ -1,14 +1,12 @@
-* {
-    background-image: radial-gradient(rgb(250, 236, 236), rgb(211, 189, 247));
-}
+
 
 header {
     width: 100%;
-    background-color: rgb(229, 246, 247);
+    background-image: radial-gradient(rgb(250, 236, 236), rgb(189, 240, 247));
 
     .headerName {
         padding-top: 20px;
-        font-size: 50px;
+        font-size: 20px;
         font-family: fantasy;
         font-weight: bolder;
         color: rgb(47, 51, 56);
@@ -21,15 +19,15 @@ header {
 
         .navBarChild {
             background-color: rgb(168, 231, 247);
-            border: 1px solid gray;
+            
             display: inline-block;
-            width: 20%;
+            width: 10%;
             padding-block: 10px;
             padding-inline: 20px;
             font-family: cursive;
             font-weight: bolder;
             text-align: center;
-            font-size: 30px;
+            font-size: 10px;
             border-radius: 10px;
             margin-inline: 1.3%;
         }
@@ -41,7 +39,7 @@ main {
     padding-bottom: 50px;
 
     .aboutMe {
-        width: 21%;
+        width: 20%;
         background-color: blanchedalmond;
         padding: 10px;
         border: 3px dashed gray;
@@ -53,7 +51,7 @@ main {
     }
 
     .PWork {
-        width: 21%;
+        width: 20%;
         background-color: blanchedalmond;
         padding: 10px;
         border: 3px dashed gray;
@@ -65,7 +63,7 @@ main {
     }
 
     .Edu {
-        width: 21%;
+        width: 20%;
         background-color: blanchedalmond;
         padding: 10px;
         border: 3px dashed gray;
@@ -77,7 +75,7 @@ main {
     }
 
     .projects {
-        width: 21%;
+        width: 20%;
         background-color: blanchedalmond;
         padding: 10px;
         border: 3px dashed gray;
@@ -108,7 +106,7 @@ footer {
 }
 
 .text {
-    font-size: 20px;
+    font-size: 10px;
     font-family: monospace;
     padding: 10px;
 }
