@@ -1,4 +1,12 @@
 h1 {
-    padding-left: 48%;
+    text-align: center;
     
+}
+div {
+    text-align: center;
+    span {
+        font-size: 80px;
+        padding-inline: 15px;
+        
+    }
 }
