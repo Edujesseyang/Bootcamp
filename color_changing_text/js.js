@@ -1,10 +1,10 @@
 const text = document.getElementById("c1");
-text.style.color = "blue";
+text.style.color = "yellow";
 let color = "red"
 setInterval(() => {
     text.style.color = color;
     if (color == "red") {
-        color = "blue";
+        color = "yellow";
     } else {
         color = "red";
     }
@@ -19,7 +19,7 @@ const t6 = document.getElementById("t6");
 const t7 = document.getElementById("t7");
 
 let color_arr = ["red", "orange", "yellow", "green", "aqua", "blue", "purple"];
-let size_arr = ["10px", "15px", "20px", "25px", "30px", "35px", "40px"];
+let size_arr = ["20px", "25px", "20px", "25px", "20px", "25px", "20px"];
 
 setInterval(() => {
     t1.style.color = color_arr[0];
@@ -44,9 +44,9 @@ setInterval(() => {
     t7.style.fontSize = size_arr[6];
     if (color_arr[0] == "red") {
         color_arr = ["purple", "blue", "aqua", "green", "yellow", "orange", "red"];
-        size_arr = ["10px", "15px", "20px", "25px", "30px", "35px", "40px"];
+        size_arr = ["20px", "25px", "20px", "25px", "20px", "25px", "20px"];
     } else {
         color_arr = ["red", "orange", "yellow", "green", "aqua", "blue", "purple"]
-        size_arr = ["40px", "35px", "30px", "25px", "20px", "15px", "10px"];
+        size_arr = ["25px", "20px", "25px", "20px", "25px", "20px", "25px"];
     }
 }, 500);
