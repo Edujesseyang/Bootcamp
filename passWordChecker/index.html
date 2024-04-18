@@ -4,17 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="\simple_js_use\style.css">
+    <title>Password Checker</title>
+    <link rel="stylesheet" href="/passWordChecker/style.css">
 </head>
 
 <body>
     <div class="main">
-        <div>
-            <p id="info">Create a pass word, It has to have one uppercase one number and one lowercase.</p>
+        <h1 id="congrats"></h1>
+        <div class="text" id="congrats">
+            <p id="info">Create a Password</p>
+            <ul>
+                <li id="l1">First character has to be uppercase</li>
+                <li id="l2">Include 2 characters(1 uppercase and 1 lowercase).</li>
+                <li id="l3">At least 2 number.</li>
+                <li id="l4">1 special symbol (! @ # $ % & _).</li>
+                <li id="l5">More than 8 digits.</li>
+            </ul>
         </div>
         <input class="ipt" id="input" title="input box">
-       
+
         <div class="btns">
             <button type="submit" id="sb" title="btn">Submit</button>
             <button type="button" id="cb" title="btn2">Cancel</button>
