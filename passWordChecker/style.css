@@ -1,0 +1,32 @@
+.main {
+    background-color: rgb(227, 229, 231);
+    width: 30%;
+    text-align: center;
+    padding: 30px;
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 15px -5px black,
+        -3px -3px 5px rgb(245, 245, 245),
+        inset 5px 5px 15px white,
+        inset -2px -2px 7px rgb(124, 124, 124);
+
+    .text {
+        font-size: 20px;
+        font-family:cursive;
+        color: rgb(77, 77, 77);
+        text-shadow: 1px 1px 2px rgb(0, 0, 0),
+            -1px -1px 3px white;
+    }
+
+    .btns {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 125px;
+        padding-top: 5px;
+
+
+
+    }
+
+}
