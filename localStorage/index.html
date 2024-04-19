@@ -5,26 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/localStorage/style.css">
 </head>
 
 <body>
-    <p>*****************part 1*****************</p>
-    <h1>Number:</h1>
-    <h2 id="number"></h2>
-    <button id="btn">Click</button>
-    <br>
-    <br>
-    <p>*****************part 2*****************</p>
-    <br>
-    <br>
-    <input id="ipt1" placeholder="enter name">
-    <input id="ipt2" placeholder="enter age">
-    <input id="ipt3" placeholder="enter gender">
-    
-    <button id="btn2">Add</button>
-    <button id="btn3">Show</button>
-    <h3 id="text"></h3>
-    <h3 id="subtext"></h3>
+    <div class="part1">
+        <p>Click Counter</p>
+        <h3>Number:</h3>
+        <h2 id="number"></h2>
+        <button id="btn">Click</button>
+        <h1 id="full"></h1>
+
+    </div>
+    <div class="part2">
+        <h2>Waiting List</h2>
+        <p>Please enter the visitor's name:</p>
+
+
+        <input id="ipt1" placeholder="Enter visitor's name:">
+        <p>How many people whit the visitor:</p>
+        <input id="ipt2" placeholder="How many people: ">
+        <p>Provide the visitor's contact information:</p>
+        <input id="ipt3" placeholder="Leave phone number:">
+
+        <button id="btn2">Add</button>
+
+        <button id="btn3">Fresh</button>
+        <h3 id="text"></h3>
+    </div>
+    <div class="wl">
+        <button id="setTable">Set to table</button>
+        <h4 id="subtext"></h4>
+
+    </div>
+
+
 
     <script src="/localStorage/js.js"></script>
 </body>
