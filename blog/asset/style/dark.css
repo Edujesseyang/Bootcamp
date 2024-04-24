@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    background-color: rgb(0, 11, 39);
+}
+
+header {
+    background-color: rgb(24, 42, 68);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    display: flex;
+
+    h1 {
+        font-size: 30px;
+        padding-left: 10%;
+        font-family: fantasy;
+        color: rgb(196, 222, 255);
+        margin-block: auto;
+        width: 95%;
+    }
+
+    button {
+        background-color: rgb(29, 44, 114);
+        border-radius: 15px;
+        padding-block: 5px;
+        font-family: fantasy;
+        color: rgb(198, 209, 241);
+        border: 2px solid rgb(101, 117, 151);
+        display: inline;
+    }
+}
+
+main {
+    div {
+        background-color: rgb(24, 42, 68);
+        width: 80%;
+        margin: auto;
+        padding-bottom: 25px;
+        margin-top: 10px;
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 15px;
+
+        h3 {
+            font-size: 35px;
+            font-family:fantasy;
+            text-align: center;
+            padding: 10px;
+            color: rgb(181, 222, 255);
+        }
+
+        p {
+            font-size: 15px;
+            font-family:fantasy;
+            text-align: center;
+            padding: 10px;
+            color: rgb(181, 222, 255);
+        }
+
+        input {
+            color: whitesmoke;
+            text-align: center;
+            width: 20%;
+            margin-left: 40%;
+            border: 1px rgb(255, 255, 255) solid;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background-color: rgb(4, 26, 27);
+        }
+
+        textarea {
+            color: whitesmoke;
+            height: 150px;
+            text-align: left;
+            width: 40%;
+            margin-left: 30%;
+            border: 1px rgb(255, 255, 255) solid;
+            border-radius: 3px;
+            box-sizing: border-box;
+            resize: none;
+            background-color: rgb(4, 26, 27);
+        }
+
+        button {
+            display: block;
+            width: 160px;
+            margin: auto;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 5px;
+            background-color: rgb(1, 18, 31);
+            color: white;
+        }
+    }
+}
