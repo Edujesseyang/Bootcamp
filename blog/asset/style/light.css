@@ -46,7 +46,7 @@ main {
 
         h3 {
             font-size: 35px;
-            font-family:fantasy;
+            font-family: fantasy;
             text-align: center;
             padding: 10px;
             color: rgb(47, 68, 99);
@@ -54,7 +54,7 @@ main {
 
         p {
             font-size: 15px;
-            font-family:fantasy;
+            font-family: fantasy;
             text-align: center;
             padding: 10px;
             color: rgb(47, 70, 105);
@@ -92,4 +92,8 @@ main {
             background-color: bisque;
         }
     }
+}
+
+#back {
+    margin-top: 10px;
 }
