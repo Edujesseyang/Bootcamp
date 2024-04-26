@@ -27,26 +27,28 @@ theme_btn.addEventListener('click', function () {
 
 // ******************* Page switch behave (submit_btn) ************************
 const submit_btn = document.querySelector('#submit_btn');
-
 const input_1 = document.querySelector('#ip1');
 const input_2 = document.querySelector('#ip2');
 const input_3 = document.querySelector('#ip3');
 
+if (localStorage.getItem("post") == null) {
+    post_array = [];
+}
+else {
+    post_array = JSON.parse(localStorage.getItem("post"));
+}
+console.log(post_array);
 
 submit_btn.addEventListener("click", function () {
+
     window.location.href = "./blog.html";
     let post_obj = {
         name: input_1.value,
         title: input_2.value,
         text: input_3.value
     }
-
-
-    let post_json = JSON.stringify(post_obj);
-  
-    localStorage.setItem("post", post_json);
-
+    post_array.push(post_obj);
+    localStorage.setItem("post", JSON.stringify(post_array));
 });
-
-
+// *****************************************************************************
 

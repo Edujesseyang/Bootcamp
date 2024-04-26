@@ -13,6 +13,9 @@ header {
     border: 1px solid rgb(255, 255, 255);
     border-radius: 15px;
     display: flex;
+    position: fixed;
+    width: 100%;
+    background-image: url("../../asset/pics/p4.gif");
 
     h1 {
         font-size: 30px;
@@ -35,6 +38,16 @@ header {
 }
 
 main {
+    padding-top: 50px;
+
+    background-image: url("../../asset/pics/b5.png");
+    background-size: cover;
+    background-repeat: repeat;
+
+
+
+
+
     div {
         background-color: rgb(24, 42, 68);
         width: 80%;
@@ -43,10 +56,11 @@ main {
         margin-top: 10px;
         border: 1px solid rgb(255, 255, 255);
         border-radius: 15px;
+        background-image: url("../../asset/pics/b2.png");
 
         h3 {
             font-size: 35px;
-            font-family:fantasy;
+            font-family: fantasy;
             text-align: center;
             padding: 10px;
             color: rgb(181, 222, 255);
@@ -54,7 +68,7 @@ main {
 
         p {
             font-size: 15px;
-            font-family:fantasy;
+            font-family: fantasy;
             text-align: center;
             padding: 10px;
             color: rgb(181, 222, 255);
@@ -69,11 +83,12 @@ main {
             border-radius: 3px;
             box-sizing: border-box;
             background-color: rgb(4, 26, 27);
+            height: 40px;
         }
 
         textarea {
             color: whitesmoke;
-            height: 150px;
+            height: 450px;
             text-align: left;
             width: 40%;
             margin-left: 30%;
@@ -92,10 +107,36 @@ main {
             border-radius: 5px;
             background-color: rgb(1, 18, 31);
             color: white;
+            height: 40px;
+            margin-top: 30px;
+        }
+
+        #delete {
+            display: inline;
+            width: 60px;
+            padding-block: 30px;
+            border: 3px solid rgb(255, 0, 0);
+            border-radius: 45px;
+            margin-left: 2%;
+            background-image: radial-gradient(rgb(94, 0, 0), rgb(0, 38, 87));
+            font-family: fantasy;
+            color: antiquewhite;
+            position: fixed;
+            margin-top: 700px;
         }
     }
 }
 
 #back {
     margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    color: rgb(180, 231, 247);
+    font-size: 15px;
+    background-color: rgb(24, 42, 68);
+    border: 1px solid rgb(255, 255, 255);
+    background-image: url("../../asset/pics/p4.gif");
+    font-family: fantasy;
 }

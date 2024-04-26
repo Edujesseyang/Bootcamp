@@ -25,17 +25,27 @@ theme_btn.addEventListener('click', function () {
 // ****************************************************************************
 
 // ********************* get post ***********************************
-let post_array = [];
-let post_json = localStorage.getItem("post");
-let post_obj = JSON.parse(post_json);
-post_array.push(post_obj);
+
+let post_array = JSON.parse(localStorage.getItem("post"));
+
 
 let main = document.querySelector("#main");
 let main_div = document.querySelector("#main_div");
 if (post_array != null) {
     for (let i = 0; i < post_array.length; i++) {
         let new_post = document.createElement("div");
+        new_post.style.height = "auto";
+        new_post.style.backgroundImage = "none";   // can be remove for fancy looking
         let new_name = document.createElement("h3");
+        if (post_array[i].name == "") {
+            post_array[i].name = "Unknown User";
+        }
+        if (post_array[i].title == "") {
+            post_array[i].title = "Nothing to say";
+        }
+        if (post_array[i].text == "") {
+            post_array[i].text = "The user did not leave anything.";
+        }
         new_name.innerText = post_array[i].name;
         new_name.style.textAlign = "left";
         if (localStorage.getItem("theme") == "light") {
@@ -55,9 +65,7 @@ if (post_array != null) {
             main_div.append(new_post);
         }
         main.append(main_div);
-
     }
-
 }
 
 
@@ -66,7 +74,15 @@ const back_btn = document.querySelector('#back');
 
 back_btn.addEventListener('click', function () {
     window.location.href = "./index.html";
-
-
 })
 // **************************************************
+
+
+// ************ delete ********************
+const delete_btn = document.querySelector("#delete");
+delete_btn.addEventListener("click", function () {
+    post_array.pop();
+    localStorage.setItem("post", JSON.stringify(post_array));
+    location.reload();
+})
+// *****************************************

@@ -6,13 +6,17 @@
 
 body {
     background-color: rgb(255, 242, 234);
+
 }
 
 header {
-    background-color: aliceblue;
+    background-color: rgb(186, 220, 250);
     border: 1px solid black;
     border-radius: 15px;
     display: flex;
+    position: fixed;
+    width: 100%;
+    background-image: url("../../asset/pics/p4.gif");
 
     h1 {
         font-size: 30px;
@@ -35,6 +39,11 @@ header {
 }
 
 main {
+    padding-top: 50px;
+    background-image: url("../../asset/pics/b4.png");
+    background-size: cover;
+    background-repeat: repeat; 
+
     div {
         background-color: aliceblue;
         width: 80%;
@@ -43,6 +52,8 @@ main {
         margin-top: 10px;
         border: 1px solid black;
         border-radius: 15px;
+        background-image: url("../../asset/pics/b3.png");
+        
 
         h3 {
             font-size: 35px;
@@ -68,10 +79,11 @@ main {
             border-radius: 3px;
             box-sizing: border-box;
             background-color: rgb(252, 244, 234);
+            height: 40px;
         }
 
         textarea {
-            height: 150px;
+            height: 450px;
             ;
             text-align: left;
             width: 40%;
@@ -90,10 +102,37 @@ main {
             border: 1px solid black;
             border-radius: 5px;
             background-color: bisque;
+            height: 40px;
+            margin-top: 30px;
+
+        }
+
+        #delete {
+            display: inline;
+            width: 60px;
+            padding-block: 30px;
+            border: 3px solid rgb(255, 0, 0);
+            border-radius: 45px;
+            margin-left: 2%;
+            background-image: radial-gradient(rgb(240, 40, 40), rgb(5, 52, 114));
+            
+            font-family: fantasy;
+            position: fixed;
+            margin-top: 700px;
         }
     }
 }
 
 #back {
     margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    color:rgb(8, 30, 51);
+    font-size:15px;
+    background-color: rgb(186, 220, 250);
+    border: 1px solid rgb(255, 255, 255);
+    background-image: url("../../asset/pics/p4.gif");
+    font-family: fantasy;
 }
