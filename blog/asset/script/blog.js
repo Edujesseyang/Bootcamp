@@ -28,32 +28,43 @@ let main = document.querySelector("#main");
 let main_div = document.querySelector("#main_div");
 if (post_array != null) {
     for (let i = 0; i < post_array.length; i++) {
+        // defined elements
         let new_post = document.createElement("div");
-        new_post.style.height = "auto";
-        new_post.style.backgroundImage = "none";   // can be remove for fancy looking
         let new_name = document.createElement("h3");
+        let new_title = document.createElement("p");
+        let new_content = document.createElement("p");
+
+        // assign value to elements
         if (post_array[i].name == "") {
             post_array[i].name = "Unknown User";
+        } else {
+            new_name.innerText = post_array[i].name;
         }
         if (post_array[i].title == "") {
-            post_array[i].title = "Nothing to say";
+            post_array[i].title = "No title";
+        } else {
+            new_title.innerText = `Topic: ` + post_array[i].title;
         }
         if (post_array[i].text == "") {
             post_array[i].text = "The user did not leave anything.";
-        }
-        new_name.innerText = post_array[i].name;
-        new_name.style.textAlign = "left";
-        if (localStorage.getItem("theme") == "light") {
-            new_name.style.borderBottom = "1px solid black";
         } else {
-            new_name.style.borderBottom = "1px solid white";
+            new_content.innerText = `Post:\n\n` + post_array[i].text;
         }
-        let new_title = document.createElement("p");
-        new_title.innerText = post_array[i].title;
+
+        // adding styles:
+        new_post.style.height = "auto";
+        new_post.style.backgroundImage = "none";   // can be remove for fancy looking
+        new_name.style.borderBottom = "1px solid gray";
+        new_name.style.textAlign = "left";
+        new_title.style.fontWeight = "bolder";
+        new_title.style.fontFamily = "none";
+        new_title.style.fontSize = "20px";
         new_title.style.textAlign = "left";
-        let new_content = document.createElement("p");
-        new_content.innerText = post_array[i].text;
+        new_title.style.borderBottom = "1px dashed gray";
+        new_content.style.fontFamily = "none";
         new_content.style.textAlign = "left";
+
+        // append all elements to the page
         new_post.append(new_name, new_title, new_content);
         if (main_div != null) {
             main_div.append(new_post);
@@ -61,9 +72,9 @@ if (post_array != null) {
         main.append(main_div);
     }
 }
+// *****************************************************************
 
-
-// ************* go back button *********************
+// ************************ go back button ************************
 const back_btn = document.querySelector('#back');
 back_btn.addEventListener('click', function () {
     window.location.href = "./index.html";
