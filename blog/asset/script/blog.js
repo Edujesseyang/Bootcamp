@@ -1,14 +1,12 @@
 // ****************** Theme change behave (theme_btn) ************************
 const theme_btn = document.querySelector('#theme_btn');
 const style_link = document.querySelector('#style_link');
-
 let current_theme = localStorage.getItem("theme");
 if (current_theme == 'dark') {
     style_link.setAttribute('href', './asset/style/dark.css');
 } else {
     style_link.setAttribute('href', './asset/style/light.css');
 }
-
 theme_btn.addEventListener('click', function () {
     current_theme = localStorage.getItem("theme");
     if (current_theme == 'light') {
@@ -25,10 +23,7 @@ theme_btn.addEventListener('click', function () {
 // ****************************************************************************
 
 // ********************* get post ***********************************
-
 let post_array = JSON.parse(localStorage.getItem("post"));
-
-
 let main = document.querySelector("#main");
 let main_div = document.querySelector("#main_div");
 if (post_array != null) {
@@ -53,7 +48,6 @@ if (post_array != null) {
         } else {
             new_name.style.borderBottom = "1px solid white";
         }
-
         let new_title = document.createElement("p");
         new_title.innerText = post_array[i].title;
         new_title.style.textAlign = "left";
@@ -71,7 +65,6 @@ if (post_array != null) {
 
 // ************* go back button *********************
 const back_btn = document.querySelector('#back');
-
 back_btn.addEventListener('click', function () {
     window.location.href = "./index.html";
 })
