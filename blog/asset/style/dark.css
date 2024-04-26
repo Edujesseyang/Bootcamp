@@ -35,6 +35,10 @@ header {
         border: 2px solid rgb(101, 117, 151);
         display: inline;
     }
+
+    button:hover {
+        transform: scale(110%);
+    }
 }
 
 main {
@@ -111,18 +115,27 @@ main {
             margin-top: 30px;
         }
 
+        button:hover {
+            transform: scale(110%);
+        }
+
         #delete {
             display: inline;
             width: 60px;
-            padding-block: 30px;
+            height: 60px;
             border: 3px solid rgb(255, 0, 0);
             border-radius: 45px;
             margin-left: 2%;
             background-image: radial-gradient(rgb(94, 0, 0), rgb(0, 38, 87));
+            font-size: 20px;
             font-family: fantasy;
-            color: antiquewhite;
+            color: rgb(165, 200, 252);
             position: fixed;
-            margin-top: 700px;
+            margin-top: 650px;
+        }
+
+        #delete:hover {
+            transform: scale(120%);
         }
     }
 }

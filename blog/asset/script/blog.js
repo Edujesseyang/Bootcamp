@@ -37,25 +37,26 @@ if (post_array != null) {
         // assign value to elements
         if (post_array[i].name == "") {
             post_array[i].name = "Unknown User";
-        } else {
-            new_name.innerText = post_array[i].name;
         }
+        new_name.innerText = post_array[i].name;
+
         if (post_array[i].title == "") {
-            post_array[i].title = "No title";
-        } else {
-            new_title.innerText = `Topic: ` + post_array[i].title;
+            post_array[i].title = "N/A";
         }
+        new_title.innerText = `Topic: ` + post_array[i].title;
+
         if (post_array[i].text == "") {
-            post_array[i].text = "The user did not leave anything.";
-        } else {
-            new_content.innerText = `Post:\n\n` + post_array[i].text;
+            post_array[i].text = "N/A";
         }
+        new_content.innerText = `Post:\n\n` + post_array[i].text;
+
 
         // adding styles:
         new_post.style.height = "auto";
         new_post.style.backgroundImage = "none";   // can be remove for fancy looking
         new_name.style.borderBottom = "1px solid gray";
         new_name.style.textAlign = "left";
+        new_name.style.fontFamily = "none";
         new_title.style.fontWeight = "bolder";
         new_title.style.fontFamily = "none";
         new_title.style.fontSize = "20px";
