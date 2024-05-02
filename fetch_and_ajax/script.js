@@ -1,5 +1,6 @@
 const btn = document.querySelector("#btn");
 const box = document.querySelector("#box");
+const link = "http://worldtimeapi.org/api/timezone/America/Los_Angeles";
 
 function showWeekDay(day) {
     let result = "";
@@ -32,10 +33,7 @@ function showWeekDay(day) {
     return result;
 }
 
-
-
-btn.addEventListener("click", function () {
-    const link = "http://worldtimeapi.org/api/timezone/America/Los_Angeles";
+btn.addEventListener("click", function () {   
     fetch(link)
         .then(response => {
             return response.json();
@@ -48,7 +46,6 @@ btn.addEventListener("click", function () {
             const day = document.querySelector('#day');
             day.textContent = showWeekDay(weekDay);
         
-
             // formate time and date.
             let date_time = data.datetime.split('T');
             let date = date_time[0];
