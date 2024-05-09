@@ -17,19 +17,28 @@
     <main>
         <div class="searchBar">
             <p>Enter a name of the city you want to search:</p>
-            <input class="inputBOx" placeholder="Enter the city">
-            <button class="searchBtn">Search</button>
-            <div class="searchHistory"></div>
+            <input id="inputBox" placeholder="Enter the city">
+            <button id="searchBtn">Search</button>
+            <div class="history" id="searchHistory"></div>
         </div>
-        <div class="displayBox">
-
+        <div class="display" id="displayBox">
+            <div id="dayBox">
+                <h1 id="dateTime"></h1>
+                <h2 id="localText"></h2>
+                <h3 id="boxHead"></h3>
+                <h4 id="tempMax"></h4>   
+                <h4 id="tempMin"></h4> 
+                <h4 id="wind"></h4>  
+            </div>
         </div>
     </main>
-    
+
     <footer>
         <h4>Jesse Yang<br>Email:edujesseyang@gmail.com</h4>
     </footer>
 
+
+    <script src="/weather_forecast/script.js"></script>
 </body>
 
 </html>
