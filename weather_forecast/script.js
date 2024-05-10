@@ -1,22 +1,29 @@
-// get link for direct city name search
-const API_KEY = `08e63eb3641d6ccee8d95b656261354a`;
-const API_KEY2 = `1a98ec91fb8a859bdf57a0189a773a08`;
-function getLink(lat, lon, apiKey) {
 
+// selectors def
+const inputBox = document.querySelector('#inputBox');
+const searchBtn = document.querySelector('#searchBtn');
+const displayBox = document.querySelector(`#displayBox`);
+const searchHistory = document.querySelector(`#searchHistory`);
+
+
+// get link for direct city name search
+const API_KEY = `08e63eb3641d6ccee8d95b656261354a`; // API key
+const API_KEY2 = `1a98ec91fb8a859bdf57a0189a773a08`; // back-up API key
+function getLink(lat, lon, apiKey) {
     let API_LINK = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     console.log(API_LINK);
     return API_LINK;
 }
 
 
-// temp calc
+// temp calc function
 function K_to_F(KelvinTemp) {
     return (((KelvinTemp - 273.15) * 9 / 5) + 32).toFixed(1);
 }
 
-// direction finder
-function degreeCalc(degree) {
 
+// direction finder function
+function degreeCalc(degree) {
     if (degree >= 0 && degree < 45) {
         return "North East";
     } else if (degree >= 45 && degree < 90) {
@@ -34,65 +41,99 @@ function degreeCalc(degree) {
     } else if (degree >= 315 && degree < 360) {
         return "North West";
     }
+}
+ 
 
+// get Max and Min function  (for temp)
+function getMaxMin_temp(listArray, startIndex) {
+    let maxTemp = listArray[0].main.temp;
+    let minTemp = listArray[0].main.temp;
+    let result = [];
+    for (let i = startIndex; i < startIndex + 8; i++) {
+        if (listArray[i].main.temp >= maxTemp) {
+            maxTemp = listArray[i].main.temp;
+        }
+        if (listArray[i].main.temp <= minTemp) {
+            minTemp = listArray[i].main.temp;
+        }
+    }
+    result.push(maxTemp);
+    result.push(minTemp);
+    return result;
 }
 
-// selectors def
-const inputBox = document.querySelector('#inputBox');
-const searchBtn = document.querySelector('#searchBtn');
-const displayBox = document.querySelector(`#displayBox`);
-const searchHistory = document.querySelector(`#searchHistory`);
 
-
-// **** save searching history ****
-// 1. get local storage searched data and put on the page
-let historyArray = JSON.parse(localStorage.getItem(`history`)) || [];
-if (historyArray != null) {
-    for (let i = 0; i < historyArray.length; i++) {
-        if (historyArray[i] != ``) {
-            const history = document.createElement(`p`);
-            history.textContent = historyArray[i];
-            searchHistory.append(history);
-            // FIXME: Add class attribute, use querySelectorAll to get all addEventListener getData(value)
+// get Max and Min function  (for wind speed)
+function getMaxMin_windSpeed(listArray, startIndex) {
+    let maxTemp = listArray[0].wind.speed;
+    let minTemp = listArray[0].wind.speed;
+    let result = [];
+    for (let i = startIndex; i < startIndex + 8; i++) {
+        if (listArray[i].wind.speed >= maxTemp) {
+            maxTemp = listArray[i].wind.speed;
         }
+        if (listArray[i].wind.speed <= minTemp) {
+            minTemp = listArray[i].wind.speed;
+        }
+    }
+    result.push(maxTemp);
+    result.push(minTemp);
+    return result;
+}
+
+
+// create history button function
+function createHistoryButton(value) {
+    const history = document.createElement('button');
+    history.textContent = value;
+    history.addEventListener('click', function () {
+        console.log(this.innerText);
+        getData(this.innerText);
+    });
+    searchHistory.append(history);
+}
+
+
+// add searching to the local storage and display to the page
+function addSearch() {
+    if (!historyArray.includes(inputBox.value) && inputBox.value) {
+        historyArray.push(inputBox.value);
+        createHistoryButton(inputBox.value);
+        localStorage.setItem(`history`, JSON.stringify(historyArray));
     }
 }
 
 
+// get local storage searched data and put on the page
+let historyArray = JSON.parse(localStorage.getItem(`history`)) || [];
+historyArray.forEach(item => {
+    if (item !== '') {
+        createHistoryButton(item);
+    }
+});
 
-// 2. click search btn
+
+// behavior when click search btn
 searchBtn.addEventListener(`click`, function () {
     addSearch();
     getData(inputBox.value);
 })
 
 
-// add searching to the local storage and display to the page
-function addSearch() {
-    if (!historyArray.includes(inputBox.value) && inputBox.value) {
-        const history = document.createElement(`p`);
-        historyArray.push(inputBox.value);
-        history.textContent = inputBox.value;
-        searchHistory.append(history);
-    }
-    localStorage.setItem(`history`, JSON.stringify(historyArray));
-}
-
-
-
 // get API data
 function getData(searchCity) {
     if (searchCity != '') {
         // fetch nested 
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${inputBox.value}&limit=1&appid=${API_KEY}`)
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchCity}&limit=1&appid=${API_KEY}`)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                // get lat and lon
-                console.log(data);
+                // get lat and lon from the data
                 lat = data[0].lat.toFixed(2).toString();
                 lon = data[0].lon.toFixed(2).toString();
+
+                // get location(str) for display the weather info boxes.
                 let location = data[0].name + ', ' + data[0].state + ', ' + data[0].country;
 
                 // use lat and lon to get the weather info
@@ -104,61 +145,89 @@ function getData(searchCity) {
                         return response.json();
                     })
                     .then(data => {
-                        console.log(data);
+                        // get temp for 5 days
+                        let maxMinTemp_d1 = getMaxMin_temp(data.list, 0);
+                        let maxMinTemp_d2 = getMaxMin_temp(data.list, 8);
+                        console.log(K_to_F(maxMinTemp_d2[0]));
+                        let maxMinTemp_d3 = getMaxMin_temp(data.list, 16);
+                        let maxMinTemp_d4 = getMaxMin_temp(data.list, 24);
+                        let maxMinTemp_d5 = getMaxMin_temp(data.list, 32);
 
-                        // get tempArray include 40 temps of 5 days.
-                        let tempArray = [];
-                        for (let i = 0; i < 40; i++) {
-                            tempArray.push(data.list[i].main.temp);
-                        }
-                        console.log(tempArray);
-                        // get max and min for first day
-                        let maxTemp = tempArray[0];
-                        let minTemp = tempArray[0];
-                        for (let i = 0; i < 8; i++) {
+                        // get wind speed for 5 days
+                        let maxMinWindSpeed_d1 = getMaxMin_windSpeed(data.list, 0);
+                        let maxMinWindSpeed_d2 = getMaxMin_windSpeed(data.list, 8);
+                        let maxMinWindSpeed_d3 = getMaxMin_windSpeed(data.list, 16);
+                        let maxMinWindSpeed_d4 = getMaxMin_windSpeed(data.list, 24);
+                        let maxMinWindSpeed_d5 = getMaxMin_windSpeed(data.list, 32);
 
-                            if (tempArray[i] >= maxTemp) {
-                                maxTemp = tempArray[i];
-                            }
-                            if (tempArray[i] <= minTemp) {
-                                minTemp = tempArray[i];
-                            }
-                        }
-
-
-                        // get the max wind speed in day1
-                        let windSpeedMax = data.list[0].wind.speed;
-                        let windSpeedMin = data.list[0].wind.speed;
-                        for (let i = 0; i < 8; i++) {
-                            if (windSpeedMax <= data.list[i].wind.speed) {
-                                windSpeedMax = data.list[i].wind.speed;
-                            }
-                            if (windSpeedMin >= data.list[i].wind.speed) {
-                                windSpeedMin = data.list[i].wind.speed;
-                            }
-                        }
-
-
-                        // create first day box elements
-                        const dayBox = document.querySelector(`#dayBox`);
+                        // day 1 box elements
                         const dateTime = document.querySelector(`#dateTime`);
                         const boxHead = document.querySelector(`#boxHead`);
                         const tempMax = document.querySelector(`#tempMax`);
                         const tempMin = document.querySelector(`#tempMin`);
                         const wind = document.querySelector(`#wind`);
                         const localText = document.querySelector(`#localText`);
-                        localText.innerText = location;
-                        wind.innerText = "Wind:\nhighest: " + windSpeedMax + ' km per hour\nlowest:  ' + windSpeedMin + " km per hour\nDirection:  " + degreeCalc(data.list[0].wind.deg);
-                        tempMax.innerText = "Highest temp: " + K_to_F(maxTemp);
-                        tempMin.innerText = "Lowest temp:  " + K_to_F(minTemp);
-                        boxHead.innerText = data.list[0].weather[0].description;
-                        dateTime.innerText = "Date: " + data.list[0].dt_txt.split(' ')[0];
-                        dayBox.append(dateTime, localText, boxHead, tempMax, tempMin, wind);
-                        displayBox.append(dayBox);
-                        displayBox.style.display = "block";
-                        dayBox.style.marginTop = "5px";
 
-                        console.log(data.list[0].weather[0].description,);
+                        // display day 1
+                        dateTime.innerText = "Date: " + data.list[0].dt_txt.split(' ')[0];
+                        localText.innerText = location;
+                        boxHead.innerText = data.list[4].weather[0].description;
+                        tempMax.innerText = "Highest : " + K_to_F(maxMinTemp_d1[0]);
+                        tempMin.innerText = "Lowest :  " + K_to_F(maxMinTemp_d1[1]);
+                        wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d1[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d1[1] + " km per hour\nDirection:  " + degreeCalc(data.list[4].wind.deg);
+
+
+                        // day 2 elements 
+                        const day2Head = document.querySelector(`#day2Head`);
+                        const day2Date = document.querySelector(`#day2Date`);
+                        const day2Text = document.querySelector(`#day2Text`);
+                        const day2Wind = document.querySelector(`#day2Wind`);
+                        // display day 2
+                        day2Date.innerText = "Date : " + data.list[12].dt_txt.split(' ')[0];
+                        day2Head.innerText = data.list[12].weather[0].description;
+                        day2Text.innerText = "Highest : " + K_to_F(maxMinTemp_d2[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d2[1]);
+                        day2Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d2[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d2[1] + " km per hour\nDirection:  " + degreeCalc(data.list[12].wind.deg);
+
+
+
+                        // day 2 elements 
+                        const day3Head = document.querySelector(`#day3Head`);
+                        const day3Date = document.querySelector(`#day3Date`);
+                        const day3Text = document.querySelector(`#day3Text`);
+                        const day3Wind = document.querySelector(`#day3Wind`);
+                        // display day 2
+                        day3Date.innerText = "Date : " + data.list[20].dt_txt.split(' ')[0];
+                        day3Head.innerText = data.list[20].weather[0].description;
+                        day3Text.innerText = "Highest : " + K_to_F(maxMinTemp_d3[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d3[1]);
+                        day3Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d3[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d3[1] + " km per hour\nDirection:  " + degreeCalc(data.list[20].wind.deg);
+
+
+                        // day 2 elements 
+                        const day4Head = document.querySelector(`#day4Head`);
+                        const day4Date = document.querySelector(`#day4Date`);
+                        const day4Text = document.querySelector(`#day4Text`);
+                        const day4Wind = document.querySelector(`#day4Wind`);
+                        // display day 2
+                        day4Date.innerText = "Date : " + data.list[28].dt_txt.split(' ')[0];
+                        day4Head.innerText = data.list[28].weather[0].description;
+                        day4Text.innerText = "Highest : " + K_to_F(maxMinTemp_d4[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d4[1]);
+                        day4Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d4[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d4[1] + " km per hour\nDirection:  " + degreeCalc(data.list[28].wind.deg);
+
+
+                        // day 2 elements 
+                        const day5Head = document.querySelector(`#day5Head`);
+                        const day5Date = document.querySelector(`#day5Date`);
+                        const day5Text = document.querySelector(`#day5Text`);
+                        const day5Wind = document.querySelector(`#day5Wind`);
+                        // display day 2
+                        day5Date.innerText = "Date : " + data.list[36].dt_txt.split(' ')[0];
+                        day5Head.innerText = data.list[36].weather[0].description;
+                        day5Text.innerText = "Highest : " + K_to_F(maxMinTemp_d5[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d5[1]);
+                        day5Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d5[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d5[1] + " km per hour\nDirection:  " + degreeCalc(data.list[36].wind.deg);
+
+
+                        // set display to bloc
+                        displayBox.style.display = "block";
                     })
                     .catch(error => {
                         console.log("Error: ", error);

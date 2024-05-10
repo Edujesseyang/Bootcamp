@@ -60,8 +60,7 @@ body {
 
             }
 
-            button {
-                /* border: 1px solid black; */
+            #searchBtn {
                 width: 120px;
                 height: 120px;
                 background-image: repeating-radial-gradient(rgb(250, 237, 124), rgb(253, 253, 253));
@@ -71,9 +70,18 @@ body {
 
             }
 
-            button:hover {
+            #searchBtn:hover {
                 transform: scale(105%);
+            }
 
+            button {
+                margin: 5px;
+                background-color: rgba(250, 235, 215, 0.493);
+                cursor: pointer;
+                padding: 3px;
+                font-family: monospace;
+                font-size: 15px;
+                border-radius: 10px;
             }
 
             .history {
@@ -98,12 +106,14 @@ body {
             margin-left: 15%;
             margin-top: 50px;
             font-family: monospace;
+            box-shadow: 15px 15px 30px -5px rgba(0, 0, 0, 0.493);
             display: none;
 
             h1 {
                 font-size: 35px;
                 font-weight: bolder;
                 padding-left: 10%;
+                margin: 10px;
             }
 
             h2 {
@@ -111,24 +121,71 @@ body {
                 padding-left: 10%;
                 padding-block: 15px;
                 font-weight: 300;
+                margin: 10px;
             }
 
             h3 {
                 font-size: 45px;
                 padding-left: 10%;
                 padding-block: 15px;
+                margin: 10px;
             }
 
             h4 {
                 font-size: 20px;
                 padding-left: 10%;
-                border: 1px solid black;
+                border: 1px solid rgb(3, 3, 3);
                 padding-block: 10px;
                 border-radius: 15px;
+                margin: 10px;
+            }
+
+            h5 {
+                font-size: 20px;
+                border: 1px solid rgb(3, 3, 3);
+                padding: 30px;
+                border-radius: 15px;
+                margin: 10px;
+                font-weight: 100;
             }
 
 
         }
+
+        .restDaysBox {
+            .subBox {
+                background-color: rgba(243, 231, 217, 0.39);
+                margin: 30px;
+                width: 15%;
+                display: inline-block;
+                box-shadow: 15px 15px 30px -5px rgba(0, 0, 0, 0.493);
+                border-radius: 15px;
+                padding: 15px;
+                font-family: monospace;
+                vertical-align: top;
+
+                h4 {
+                    font-size: 19px;
+                }
+
+                h3 {
+                    font-size: 25px;
+                    padding: 20px;
+                }
+
+                h5 {
+                    font-size: 15px;
+                    padding: 20px;
+                }
+
+                h6 {
+                    font-size: 15px;
+                    font-weight: 200;
+                    padding: 15px;
+                }
+            }
+        }
+
 
     }
 
