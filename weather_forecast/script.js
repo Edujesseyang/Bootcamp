@@ -1,14 +1,17 @@
-
 // selectors def
 const inputBox = document.querySelector('#inputBox');
 const searchBtn = document.querySelector('#searchBtn');
 const displayBox = document.querySelector(`#displayBox`);
 const searchHistory = document.querySelector(`#searchHistory`);
+const restDays = document.querySelector(`#restDays`);
 
-
-// get link for direct city name search
+// ApI key def
 const API_KEY = `08e63eb3641d6ccee8d95b656261354a`; // API key
 const API_KEY2 = `1a98ec91fb8a859bdf57a0189a773a08`; // back-up API key
+
+
+// **************************************** functions ******************************************************************
+// get link for direct city name search
 function getLink(lat, lon, apiKey) {
     let API_LINK = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     console.log(API_LINK);
@@ -42,7 +45,7 @@ function degreeCalc(degree) {
         return "North West";
     }
 }
- 
+
 
 // get Max and Min function  (for temp)
 function getMaxMin_temp(listArray, startIndex) {
@@ -104,23 +107,7 @@ function addSearch() {
 }
 
 
-// get local storage searched data and put on the page
-let historyArray = JSON.parse(localStorage.getItem(`history`)) || [];
-historyArray.forEach(item => {
-    if (item !== '') {
-        createHistoryButton(item);
-    }
-});
-
-
-// behavior when click search btn
-searchBtn.addEventListener(`click`, function () {
-    addSearch();
-    getData(inputBox.value);
-})
-
-
-// get API data
+// get API data function
 function getData(searchCity) {
     if (searchCity != '') {
         // fetch nested 
@@ -148,7 +135,6 @@ function getData(searchCity) {
                         // get temp for 5 days
                         let maxMinTemp_d1 = getMaxMin_temp(data.list, 0);
                         let maxMinTemp_d2 = getMaxMin_temp(data.list, 8);
-                        console.log(K_to_F(maxMinTemp_d2[0]));
                         let maxMinTemp_d3 = getMaxMin_temp(data.list, 16);
                         let maxMinTemp_d4 = getMaxMin_temp(data.list, 24);
                         let maxMinTemp_d5 = getMaxMin_temp(data.list, 32);
@@ -160,14 +146,14 @@ function getData(searchCity) {
                         let maxMinWindSpeed_d4 = getMaxMin_windSpeed(data.list, 24);
                         let maxMinWindSpeed_d5 = getMaxMin_windSpeed(data.list, 32);
 
-                        // day 1 box elements
+                        
+                        // *************************day 1 box elements*************************
                         const dateTime = document.querySelector(`#dateTime`);
                         const boxHead = document.querySelector(`#boxHead`);
                         const tempMax = document.querySelector(`#tempMax`);
                         const tempMin = document.querySelector(`#tempMin`);
                         const wind = document.querySelector(`#wind`);
                         const localText = document.querySelector(`#localText`);
-
                         // display day 1
                         dateTime.innerText = "Date: " + data.list[0].dt_txt.split(' ')[0];
                         localText.innerText = location;
@@ -177,7 +163,7 @@ function getData(searchCity) {
                         wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d1[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d1[1] + " km per hour\nDirection:  " + degreeCalc(data.list[4].wind.deg);
 
 
-                        // day 2 elements 
+                        // *******************************day 2 elements******************************* 
                         const day2Head = document.querySelector(`#day2Head`);
                         const day2Date = document.querySelector(`#day2Date`);
                         const day2Text = document.querySelector(`#day2Text`);
@@ -189,37 +175,36 @@ function getData(searchCity) {
                         day2Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d2[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d2[1] + " km per hour\nDirection:  " + degreeCalc(data.list[12].wind.deg);
 
 
-
-                        // day 2 elements 
+                        // *******************************day 3 elements******************************* 
                         const day3Head = document.querySelector(`#day3Head`);
                         const day3Date = document.querySelector(`#day3Date`);
                         const day3Text = document.querySelector(`#day3Text`);
                         const day3Wind = document.querySelector(`#day3Wind`);
-                        // display day 2
+                        // display day 3
                         day3Date.innerText = "Date : " + data.list[20].dt_txt.split(' ')[0];
                         day3Head.innerText = data.list[20].weather[0].description;
                         day3Text.innerText = "Highest : " + K_to_F(maxMinTemp_d3[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d3[1]);
                         day3Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d3[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d3[1] + " km per hour\nDirection:  " + degreeCalc(data.list[20].wind.deg);
 
 
-                        // day 2 elements 
+                        // *******************************day 4 elements******************************* 
                         const day4Head = document.querySelector(`#day4Head`);
                         const day4Date = document.querySelector(`#day4Date`);
                         const day4Text = document.querySelector(`#day4Text`);
                         const day4Wind = document.querySelector(`#day4Wind`);
-                        // display day 2
+                        // display day 4
                         day4Date.innerText = "Date : " + data.list[28].dt_txt.split(' ')[0];
                         day4Head.innerText = data.list[28].weather[0].description;
                         day4Text.innerText = "Highest : " + K_to_F(maxMinTemp_d4[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d4[1]);
                         day4Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d4[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d4[1] + " km per hour\nDirection:  " + degreeCalc(data.list[28].wind.deg);
 
 
-                        // day 2 elements 
+                       // *******************************day 5 elements******************************* 
                         const day5Head = document.querySelector(`#day5Head`);
                         const day5Date = document.querySelector(`#day5Date`);
                         const day5Text = document.querySelector(`#day5Text`);
                         const day5Wind = document.querySelector(`#day5Wind`);
-                        // display day 2
+                        // display day 5
                         day5Date.innerText = "Date : " + data.list[36].dt_txt.split(' ')[0];
                         day5Head.innerText = data.list[36].weather[0].description;
                         day5Text.innerText = "Highest : " + K_to_F(maxMinTemp_d5[0]) + "\nLowest :  " + K_to_F(maxMinTemp_d5[1]);
@@ -228,6 +213,7 @@ function getData(searchCity) {
 
                         // set display to bloc
                         displayBox.style.display = "block";
+                        restDays.style.display = "inline-block";
                     })
                     .catch(error => {
                         console.log("Error: ", error);
@@ -235,5 +221,21 @@ function getData(searchCity) {
             })
     }
 }
+// ******************************************************************************************************************************
 
 
+// ******************************************* MAIN *****************************************************************************
+// get local storage searched data and put on the page
+let historyArray = JSON.parse(localStorage.getItem(`history`)) || [];
+historyArray.forEach(item => {
+    if (item !== '') {
+        createHistoryButton(item);
+    }
+});
+
+// behavior when click search btn
+searchBtn.addEventListener(`click`, function () {
+    addSearch();
+    getData(inputBox.value);
+})
+// *****************************************************************************************************************************
