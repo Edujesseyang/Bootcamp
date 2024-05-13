@@ -54,7 +54,7 @@ function displayCurrentWeather(current, city) {
     currentWeather.innerHTML = '';
 
     const cityName = document.createElement('h2');
-    cityName.textContent = `${city.name} (${new Date(current.dt_txt).toDateString()})`;
+    cityName.innerText = `${city.name}\n${new Date(current.dt_txt).toDateString()}`;
     currentWeather.appendChild(cityName);
 
     const currentTemp = document.createElement('p');
