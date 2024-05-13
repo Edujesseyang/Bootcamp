@@ -11,7 +11,7 @@ const API_KEY2 = `1a98ec91fb8a859bdf57a0189a773a08`; // back-up API key
 
 
 // **************************************** functions ******************************************************************
-// get link for direct city name search
+// link generator use lat, lon, and API key.     * only generate link string, WILL NOT fetch
 function getLink(lat, lon, apiKey) {
     let API_LINK = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     console.log(API_LINK);
@@ -90,7 +90,6 @@ function createHistoryButton(value) {
     const history = document.createElement('button');
     history.textContent = value;
     history.addEventListener('click', function () {
-        console.log(this.innerText);
         getData(this.innerText);
     });
     searchHistory.append(history);
@@ -113,6 +112,9 @@ function getData(searchCity) {
         // fetch nested 
         fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchCity}&limit=1&appid=${API_KEY}`)
             .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 return response.json();
             })
             .then(data => {
@@ -146,7 +148,7 @@ function getData(searchCity) {
                         let maxMinWindSpeed_d4 = getMaxMin_windSpeed(data.list, 24);
                         let maxMinWindSpeed_d5 = getMaxMin_windSpeed(data.list, 32);
 
-                        
+
                         // *************************day 1 box elements*************************
                         const dateTime = document.querySelector(`#dateTime`);
                         const boxHead = document.querySelector(`#boxHead`);
@@ -199,7 +201,7 @@ function getData(searchCity) {
                         day4Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d4[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d4[1] + " km per hour\nDirection:  " + degreeCalc(data.list[28].wind.deg);
 
 
-                       // *******************************day 5 elements******************************* 
+                        // *******************************day 5 elements******************************* 
                         const day5Head = document.querySelector(`#day5Head`);
                         const day5Date = document.querySelector(`#day5Date`);
                         const day5Text = document.querySelector(`#day5Text`);
@@ -211,7 +213,7 @@ function getData(searchCity) {
                         day5Wind.innerText = "Wind:\nHighest: " + maxMinWindSpeed_d5[0] + ' km per hour\nLowest:  ' + maxMinWindSpeed_d5[1] + " km per hour\nDirection:  " + degreeCalc(data.list[36].wind.deg);
 
 
-                        // set display to bloc
+                        // set display to block
                         displayBox.style.display = "block";
                         restDays.style.display = "inline-block";
                     })
@@ -224,7 +226,7 @@ function getData(searchCity) {
 // ******************************************************************************************************************************
 
 
-// ******************************************* MAIN *****************************************************************************
+// ******************************************* MAIN (running whenever page freshed **********************************************
 // get local storage searched data and put on the page
 let historyArray = JSON.parse(localStorage.getItem(`history`)) || [];
 historyArray.forEach(item => {
