@@ -226,7 +226,7 @@ function getData(searchCity) {
 // ******************************************************************************************************************************
 
 
-// ******************************************* MAIN (running whenever page freshed **********************************************
+// ******************************************* MAIN (running whenever page freshed) **********************************************
 // get local storage searched data and put on the page
 let historyArray = JSON.parse(localStorage.getItem(`history`)) || [];
 historyArray.forEach(item => {
