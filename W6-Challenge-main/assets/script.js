@@ -14,7 +14,7 @@ function K_to_F(KelvinTemp) {
 function getCoordinate() {
     const city = citySearch.value.trim();
 
-    const requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=10&appid=${APIkey}`
+    const requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=10&appid=${APIkey}`
 
     fetch(requestUrl)
         .then(function (response) {
@@ -34,7 +34,7 @@ function getCoordinate() {
 }
 
 function getWeather(lat, lon) {
-    const requestUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
+    const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
 
     fetch(requestUrl)
         .then(function (response) {
@@ -70,7 +70,7 @@ function displayCurrentWeather(current, city) {
     currentWeather.appendChild(currentHumidity);
 
     const currentWeatherIcon = document.createElement('img');
-    currentWeatherIcon.src = `http://openweathermap.org/img/w/${current.weather[0].icon}.png`;
+    currentWeatherIcon.src = `https://openweathermap.org/img/w/${current.weather[0].icon}.png`;
     currentWeather.appendChild(currentWeatherIcon);
 }
 
@@ -100,7 +100,7 @@ function displayWeather(data) {
             weatherContainer.appendChild(humidity);
 
             const weatherIcon = document.createElement('img');
-            weatherIcon.src = `http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
+            weatherIcon.src = `https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
             weatherContainer.appendChild(weatherIcon);
 
             daysForecast.appendChild(weatherContainer);
